@@ -1,0 +1,21 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <div>
+        <asp:LoginView runat="server">
+            <asp:LoginName runat="server"></asp:LoginName>
+            <asp:CreateUserWizard runat="server"> <WizardSteps> <asp:CreateUserWizardStep runat="server" /> <asp:CompleteWizardStep runat="server" /> </WizardSteps> </asp:CreateUserWizard>
+        </asp:LoginView>
+    </div>
+</body>
+</html>
