@@ -7,24 +7,35 @@
 
 <html>
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="~/Content/Login/Login.css" />
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
 </head>
-<body>
-    <div class="container">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-xl-10">
-                <div class="card rounded-3 text-black">
-                    <div class="row g-0">
-                        <div class="col-lg-6">
-                            <div class="card-body p-md-5 mx-md-4">
+<body class="d-flex align-items-center py-4 justify-content-center  bg-body-tertiary">
+   <div class="container">
 
-                                <div class="text-center">
-                                    <img src="~/Images/logoleitour.svg"
-                                         style="width: 185px;" alt="logo">
-                                    <h4 class="mt-1 mb-5 pb-1">Leitour</h4>
-                                </div>
-                            </div>
+        <div class="w-100 m-auto form-container mb-4">
+            <form>
+                <h1 class="h3 mb-4 fw-normal fw-bold">Login</h1>
+                <div class="form-floating ">
+                    <input type="email" class="form-control mb-3 h" id="floatingInput" placeholder="seu-email@gmail.com">
+                    <label for="floatingInput">Endereço de e-mail</label>
+                </div>
+                <div class="form-floating mb-3 ">
+                    <input type="password" class="form-control" id="floatingInput" placeholder="">
+                    <label for="floatingInput">Senha</label>
+                </div>
+
+                <div class="form-check text-start my-3">
+                    <input type="checkbox" class="form-check-input" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">Lembrar de mim</label>
+                </div>
+                <button class="btn btn-primary w-100 py-2 border-5">Entrar</button>
+                <p class="text-body-secondary mt-5 mb-3">&copy;DevPolarys 2023. All Reserved</p>
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>

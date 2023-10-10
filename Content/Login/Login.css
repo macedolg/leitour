@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+}
+
 body {
     background: linear-gradient(159deg, #05F 14.03%, #003398 94.64%);
     display: flex;
@@ -22,4 +26,9 @@ body {
     width: 48rem;
     max-width: 100%;
     min-height: 30rem;
+}
+
+.form-container {
+    max-width: 21.875rem;
+    padding: 1rem;
 }
