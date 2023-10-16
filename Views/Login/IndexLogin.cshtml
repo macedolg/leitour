@@ -12,27 +12,49 @@
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
 </head>
-<body class="d-flex align-items-center py-4 justify-content-center  bg-body-tertiary">
-   <div class="container">
+<body class="justify-content-center align-items-center flex-wrap">
+    <div class="container position-relative d-inline-flex border-5">
 
-        <div class="w-100 m-auto form-container mb-4">
+        <div class="">
             <form>
-                <h1 class="h3 mb-4 fw-normal fw-bold">Login</h1>
-                <div class="form-floating ">
-                    <input type="email" class="form-control mb-3 h" id="floatingInput" placeholder="seu-email@gmail.com">
+                <div class="">
+                    <img src="~/Images/logoleitour.svg" class="modal-dialog-centered" />
+                    <h1 class="h2">LEITOUR</h1>
+                </div>
+                <button class="btn-secondary">Nova Conta</button>
+            </form>
+        </div>
+
+        <div class="form-container">
+            <form>
+                <h1 class="h3">Login</h1>
+                <h1 class="h5">Seja bem vindo a Leitour!</h1>
+                <div class="form-floating mb-3 input-group">
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                    <input type="email" class="form-control" id="floatingInput" placeholder="seu-email@gmail.com">
                     <label for="floatingInput">Endereço de e-mail</label>
                 </div>
-                <div class="form-floating mb-3 ">
+                <div class="form-floating input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                     <input type="password" class="form-control" id="floatingInput" placeholder="">
                     <label for="floatingInput">Senha</label>
                 </div>
-
-                <div class="form-check text-start my-3">
+                <div class="row">
+                <div class="form-check input-group">
                     <input type="checkbox" class="form-check-input" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">Lembrar de mim</label>
+                    <label class="form-check-label" for="flexCheckDefault">Lembrar-se</label>
+                    <div class="">
+                        <button type="button" class="btn">Forgot password?</button>
+                    </div>
                 </div>
-                <button class="btn btn-primary w-100 py-2 border-5">Entrar</button>
-                <p class="text-body-secondary mt-5 mb-3">&copy;DevPolarys 2023. All Reserved</p>
+                </div>
+                <div class="row">
+
+                    <div class="">
+                        <button type="button" class="btn btn-primary">Login</button>
+                    </div>
+                    <p class="text-body-secondary ">&copy;DevPolarys 2023. All Reserved</p>
+                </div>
             </form>
         </div>
     </div>
