@@ -98,6 +98,7 @@ h3 {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    cursor:pointer;
 }
 
 .new-account-button {
@@ -118,6 +119,7 @@ h3 {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    cursor:pointer;
 }
 
 .form-login {
