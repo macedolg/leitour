@@ -156,6 +156,7 @@ C:\Users\2ds\Desktop\3ds\tcc\leitour\obj\Debug\webleitour.csproj.CoreCompileInpu
 C:\Users\2ds\Desktop\3ds\tcc\leitour\obj\Debug\webleitour.csproj.CopyComplete
 C:\Users\2ds\Desktop\3ds\tcc\leitour\obj\Debug\webleitour.dll
 C:\Users\2ds\Desktop\3ds\tcc\leitour\obj\Debug\webleitour.pdb
+<<<<<<< HEAD
 C:\Users\Lucas Gabriel Macêdo\Documents\Projects\TCC\leitour\bin\webleitour.dll.config
 C:\Users\Lucas Gabriel Macêdo\Documents\Projects\TCC\leitour\bin\webleitour.dll
 C:\Users\Lucas Gabriel Macêdo\Documents\Projects\TCC\leitour\bin\webleitour.pdb
@@ -235,3 +236,84 @@ C:\Users\Lucas Gabriel Macêdo\Documents\Projects\TCC\leitour\obj\Debug\webleito
 C:\Users\Lucas Gabriel Macêdo\Documents\Projects\TCC\leitour\obj\Debug\webleitour.csproj.CopyComplete
 C:\Users\Lucas Gabriel Macêdo\Documents\Projects\TCC\leitour\obj\Debug\webleitour.dll
 C:\Users\Lucas Gabriel Macêdo\Documents\Projects\TCC\leitour\obj\Debug\webleitour.pdb
+=======
+C:\Users\lauan\Desktop\LeitourAsp\bin\webleitour.dll.config
+C:\Users\lauan\Desktop\LeitourAsp\bin\webleitour.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\webleitour.pdb
+C:\Users\lauan\Desktop\LeitourAsp\bin\Antlr3.Runtime.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\Newtonsoft.Json.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\System.Web.Helpers.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\System.Web.Mvc.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\System.Web.Optimization.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\System.Web.Razor.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\System.Web.WebPages.Deployment.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\System.Web.WebPages.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\System.Web.WebPages.Razor.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\WebGrease.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\System.Web.Helpers.xml
+C:\Users\lauan\Desktop\LeitourAsp\bin\System.Web.Mvc.xml
+C:\Users\lauan\Desktop\LeitourAsp\bin\System.Web.Optimization.xml
+C:\Users\lauan\Desktop\LeitourAsp\bin\System.Web.Razor.xml
+C:\Users\lauan\Desktop\LeitourAsp\bin\System.Web.WebPages.xml
+C:\Users\lauan\Desktop\LeitourAsp\bin\System.Web.WebPages.Deployment.xml
+C:\Users\lauan\Desktop\LeitourAsp\bin\System.Web.WebPages.Razor.xml
+C:\Users\lauan\Desktop\LeitourAsp\bin\Newtonsoft.Json.xml
+C:\Users\lauan\Desktop\LeitourAsp\bin\Antlr3.Runtime.pdb
+C:\Users\lauan\Desktop\LeitourAsp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\lauan\Desktop\LeitourAsp\obj\Debug\webleitour.csproj.AssemblyReference.cache
+C:\Users\lauan\Desktop\LeitourAsp\obj\Debug\webleitour.csproj.CoreCompileInputs.cache
+C:\Users\lauan\Desktop\LeitourAsp\obj\Debug\webleitour.csproj.CopyComplete
+C:\Users\lauan\Desktop\LeitourAsp\obj\Debug\webleitour.dll
+C:\Users\lauan\Desktop\LeitourAsp\obj\Debug\webleitour.pdb
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\csc.exe
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\csc.exe.config
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\csc.rsp
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\csi.exe
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\csi.exe.config
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\csi.rsp
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.AppContext.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.Console.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.IO.Compression.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.Net.Http.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.Net.Sockets.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.ValueTuple.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.Xml.XPath.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\vbc.exe
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\vbc.exe.config
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\vbc.rsp
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\VBCSCompiler.exe
+C:\Users\lauan\Desktop\LeitourAsp\bin\roslyn\VBCSCompiler.exe.config
+>>>>>>> 5b3c48060be7ea69a6f8aaa0af268fdc50d0c0b4
