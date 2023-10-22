@@ -10,23 +10,24 @@
     <section class="main-section" id="main-section">
             <div class="container-login">
                 <div class="login right-login gap2">
-                    <img src="img/LogoLeitour.svg">
-                    <div class="new-account-button">
-                        <button type="submit" class="newAccountButton" href="#" >Nova Conta</button>
-                    </div>
+                        <img src="img/LogoLeitour.svg">
+                        <form class="new-account-button">
+                            <button type="submit" class="newAccountButton" href="#" >Nova Conta</button>
+                        </form>
                 </div>
 
                 <div class="login left-login gap">
                     <h1>Login</h1>
                     <h3>Seja bem-vindo a Leitour</h3>
+                    <form id="loginForm" method="POST" action="https://localhost:8080/api/User/login">
                         <div class="form-login">
                             <div class="email-login">
-                                <span class="email-login-span"><img src="img/@.svg" ></span>
-                                <input type="email" name="email" id="email" placeholder="leitour@gmail.com" >
+                                <span class="email-login-span"><img src="img/@.svg"></span>
+                                <input type="email" name="Email" id="email" placeholder="leitour@gmail.com">
                             </div>
                             <div class="password-login">
                                 <span class="password-login-span"><img src="img/key.svg"></span>
-                                <input type="password" name="password" id="password" placeholder="Min 8 caracteres." >
+                                <input type="password" name="Password" id="password" placeholder="Min 8 caracteres">
                             </div>
 
                             <div class="remeberAndPassword">
@@ -35,11 +36,15 @@
                                 <a href="#" id="fortPass">Esqueceu a Senha?</a>
                             </div>
                             <div class="button-login">
-                                <button type="submit" class="loginButton" href="#" >LOGIN</button>
-                            </div>    
+                                <div class="button-login">
+                                    <button type="submit" class="loginButton">LOGIN</button>
+                                </div>
+                            </div>
                         </div>
-                </div>
+                    </form>
             </div>
+        </div>]
     </section>
+    <script src="Connection.js"></script>
 </body>
 </html>

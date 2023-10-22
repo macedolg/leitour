@@ -150,9 +150,14 @@ h3 {
         font-size: 20px;
         font-weight: 500;
         color: #000;
+        border-left: 2px solid #000;
     }
         #email::placeholder {
             color: #B5ADAD;
+        }
+
+        #email::-ms-check {
+            border-left: none;
         }
 
     .email-login-span {
@@ -183,6 +188,7 @@ h3 {
             font-size: 20px;
             font-weight: 500;
             color: #000;
+            border-left: 2px solid #000;
         }
             #password::placeholder {
                 color: #B5ADAD;
@@ -193,6 +199,7 @@ h3 {
             width: 16%;
             left: 4%;
             top:32%;
+            border-left: 4px #4D4D4E;
         }
 
         .gap {
