@@ -74,6 +74,7 @@ h3 {
 .left-login {
     justify-content: space-between;
     align-items: center;
+    border-left: 4px solid #D3CBCB;
 }
 
 .rememberAndPassword {
