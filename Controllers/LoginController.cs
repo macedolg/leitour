@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace webleitour.Controllers.Login
+namespace webleitour.Controllers
 {
     public class LoginController : Controller
     {
