@@ -1,63 +1,274 @@
-﻿
+﻿@model LoginViewModel
+
 @{
-    Layout = null;
+    Layout -= null
+    ViewBag.Title = "Login";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="~/Content/Login/Login.css" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
-</head>
-<body class="justify-content-center align-items-center flex-wrap">
-    <div class="container position-relative d-inline-flex border-5">
-
-        <div class="">
-            <form>
-                <div class="">
-                    <img src="~/Images/logoleitour.svg" class="modal-dialog-centered" />
-                    <h1 class="h2">LEITOUR</h1>
-                </div>
-                <button class="btn-secondary">Nova Conta</button>
+<div class="main-section" id="main-section">
+    <div class="container-login">
+        <div class="login right-login gap2">
+            <img src="img/LogoLeitour.svg" alt="Logo">
+            <form asp-controller="User" asp-action="NewAccount" method="get">
+                <button type="submit" class="newAccountButton">Nova Conta</button>
             </form>
         </div>
 
-        <div class="form-container">
-            <form>
-                <h1 class="h3">Login</h1>
-                <h1 class="h5">Seja bem vindo a Leitour!</h1>
-                <div class="form-floating mb-3 input-group">
-                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input type="email" class="form-control" id="floatingInput" placeholder="seu-email@gmail.com">
-                    <label for="floatingInput">Endereço de e-mail</label>
-                </div>
-                <div class="form-floating input-group">
-                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="password" class="form-control" id="floatingInput" placeholder="">
-                    <label for="floatingInput">Senha</label>
-                </div>
-                <div class="row">
-                <div class="form-check input-group">
-                    <input type="checkbox" class="form-check-input" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">Lembrar-se</label>
-                    <div class="">
-                        <button type="button" class="btn">Forgot password?</button>
+        <div class="login left-login gap">
+            <h1>Login</h1>
+            <h3>Seja bem-vindo a Leitour</h3>
+            <form asp-controller="User" asp-action="Login" method="post">
+                <div class="form-login">
+                    <div class="email-login">
+                        <span class="email-login-span"><img src="img/arroba.svg" alt="Email Icon"></span>
+                        <input type="email" asp-for="Email" id="email" placeholder="leitour@gmail.com">
                     </div>
-                </div>
-                </div>
-                <div class="row">
+                    <div class="password-login">
+                        <span class="password-login-span"><img src="img/key.svg" alt="Password Icon"></span>
+                        <input type="password" asp-for="Password" id="password" placeholder="Min 8 caracteres">
+                    </div>
 
-                    <div class="">
-                        <button type="button" class="btn btn-primary">Login</button>
+                    <div class="remeberAndPassword">
+                        <input type="checkbox" asp-for="RememberMe" id="remeberCheckBox">
+                        <label for="remeberMe">Lembrar-me</label>
+                        <a href="#" id="fortPass">Esqueceu a Senha?</a>
                     </div>
-                    <p class="text-body-secondary ">&copy;DevPolarys 2023. All Reserved</p>
+                    <div class="button-login">
+                        <button type="submit" class="loginButton">LOGIN</button>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
+</div>
 
-</body>
-</html>
+
+<style>
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+a {
+    color: #000; /* or whatever colour you prefer - you may also use inherit */
+    text-decoration: none;
+    color: #4D4D4E;
+    text-align: center;
+    font-size: 14px;
+    font-style: bold;
+    font-weight: 700;
+    line-height: normal;
+}
+label {
+    color: #4D4D4E;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+h1 {
+    color: #1358E3;
+    text-align: center;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+h3 {
+    color: #4D4D4E;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+
+.main-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(159deg, #05F 14.03%, #003398 94.64%);
+}
+
+.container-login   {
+    display: flex;
+    width: 1240px;
+    height: 640px;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 40px;
+}
+
+.login {
+    display: flex;
+    width: 620px;
+    height: 320px;
+    flex-direction: column;
+}
+.right-login {
+        justify-content: space-around;
+        align-items: center;
+    }
+
+.left-login {
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid #D3CBCB;
+}
+
+.rememberAndPassword {
+    display: flex;
+}
+
+.button-login {
+    width: 256px;
+    height: 56px;
+}
+
+.loginButton {
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    border: none;
+    background: linear-gradient(130deg, #145CEC 27.16%, #093284 92.98%);
+    color: #FFF;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    cursor:pointer;
+}
+
+.new-account-button {
+    width: 256px;
+    height: 56px;
+}
+
+.newAccountButton {
+    background-color: transparent;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    border-radius: 20px;
+    border: 2px solid #145CEC;
+    color: #1358E3;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    cursor:pointer;
+}
+
+.form-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: 28px;
+}
+
+.email-login {
+    position: relative;
+    display: flex;
+    justify-content: start;
+    align-self: center;
+    height: 80px;
+    width: 432px;
+    border-radius: 20px;
+    border: 2px solid #CEC1C1;
+    }
+    
+    #email {
+        height: 100%;
+        width: 100%;
+        border-radius: 20px;
+        border: none;
+        padding-left: 20px;
+        font-size: 20px;
+        font-weight: 500;
+        color: #000;
+        border-left: 2px solid #000;
+    }
+        #email::placeholder {
+            color: #B5ADAD;
+        }
+
+        #email::-ms-check {
+            border-left: none;
+        }
+
+    .email-login-span {
+        position: relative;
+        width: 16%;
+        left: 4%;
+        top:24%;
+    }
+
+
+    .password-login {
+        position: relative;
+        display: flex;
+        justify-content: start;
+        align-self: center;
+        height: 80px;
+        width: 432px;
+        border-radius: 20px;
+        border: 2px solid #CEC1C1;
+        }
+        
+        #password {
+            height: 100%;
+            width: 100%;
+            border-radius: 20px;
+            border: none;
+            padding-left: 20px;
+            font-size: 20px;
+            font-weight: 500;
+            color: #000;
+            border-left: 2px solid #000;
+        }
+            #password::placeholder {
+                color: #B5ADAD;
+            }
+    
+        .password-login-span {
+            position: relative;
+            width: 16%;
+            left: 4%;
+            top:32%;
+            border-left: 4px #4D4D4E;
+        }
+
+        .gap {
+            gap: 20px;
+        }
+
+        .gap2 {
+            gap: 32%;
+        }
+
+        .rememberAndPassword {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #forgotPass {
+            align-items: end;
+        }
+</style>
