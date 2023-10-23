@@ -1,4 +1,4 @@
-public interface ILoginViewModel
+public interface iLoginView
 {
     [Required]
     [EmailAddress]

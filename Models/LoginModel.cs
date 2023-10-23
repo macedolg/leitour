@@ -1,4 +1,4 @@
-public class LoginViewModel
+public class LoginModel : iLoginView
 {
     [Required]
     [EmailAddress]
