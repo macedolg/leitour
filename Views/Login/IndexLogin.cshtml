@@ -8,9 +8,9 @@
 <div class="main-section" id="main-section">
     <div class="container-login">
         <div class="login right-login gap2">
-            <img src="img/LogoLeitour.svg" alt="Logo">
+            <img src="Images/LogoLeitour.svg" alt="Logo">
             <form asp-controller="User" asp-action="NewAccount" method="get">
-                <button type="submit" class="newAccountButton">Nova Conta</button>
+                <button type="submit" id="newAccountButton">Nova Conta</button>
             </form>
         </div>
 
@@ -20,11 +20,11 @@
             <form asp-controller="User" asp-action="Login" method="post">
                 <div class="form-login">
                     <div class="email-login">
-                        <span class="email-login-span"><img src="img/arroba.svg" alt="Email Icon"></span>
+                        <span class="email-login-span"><img src="Images/arroba.svg" ></span>
                         <input type="email" asp-for="Email" id="email" placeholder="leitour@gmail.com">
                     </div>
                     <div class="password-login">
-                        <span class="password-login-span"><img src="img/key.svg" alt="Password Icon"></span>
+                        <span class="password-login-span"><img src="Images/key.svg" alt="Password Icon"></span>
                         <input type="password" asp-for="Password" id="password" placeholder="Min 8 caracteres">
                     </div>
 
@@ -34,7 +34,7 @@
                         <a href="#" id="fortPass">Esqueceu a Senha?</a>
                     </div>
                     <div class="button-login">
-                        <button type="submit" class="loginButton">LOGIN</button>
+                        <button type="submit" id="loginButton">LOGIN</button>
                     </div>
                 </div>
             </form>
@@ -132,7 +132,7 @@ h3 {
     height: 56px;
 }
 
-.loginButton {
+#loginButton {
     height: 100%;
     width: 100%;
     border-radius: 20px;
@@ -152,7 +152,7 @@ h3 {
     height: 56px;
 }
 
-.newAccountButton {
+#newAccountButton {
     background-color: transparent;
     height: 100%;
     width: 100%;
@@ -258,14 +258,18 @@ h3 {
             gap: 32%;
         }
 
-        .rememberAndPassword {
-            height: 100%;
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-        }
+    #remeberCheckBox{
+        cursor: pointer;
+    }
+
+    .rememberAndPassword {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
 
         #forgotPass {
             align-items: end;

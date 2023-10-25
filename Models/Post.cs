@@ -5,7 +5,7 @@ using System.Web;
 
 namespace webleitour.Models
 {
-    public class PostModel
+    public class Post
     {
         public int Id { get; set; }
         public int UserId { get; set; }

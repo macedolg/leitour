@@ -16,7 +16,7 @@ namespace webleitour.Controllers
         public async Task<ActionResult> Post()
         {
             var apiUrl = "https://localhost:7109/api/Posts";
-            List<PostModel> publicacoes = new List<PostModel>();
+            List<Post> publicacoes = new List<Post>();
 
             using (HttpClient client = new HttpClient())
             {
@@ -28,7 +28,7 @@ namespace webleitour.Controllers
 
                     if (!string.IsNullOrEmpty(content))
                     {
-                        publicacoes = JsonConvert.DeserializeObject<List<PostModel>>(content).OrderByDescending(post => post.PostDate).ToList();
+                        publicacoes = JsonConvert.DeserializeObject<List<Post>>(content).OrderByDescending(post => post.PostDate).ToList();
                     }
                     else
                     {
