@@ -1,0 +1,28 @@
+﻿@model webleitour.Container.Models.UserModel
+
+@{
+    ViewBag.Title = "Resposta da API";
+}
+
+<h2>Resposta da API</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <p>@ViewBag.ErrorMessage</p>
+}
+else
+{
+    <pre>@ViewBag.ResponseData</pre>
+}
+
+<h3>Insira seu email e senha:</h3>
+@using (Html.BeginForm("Login", "User", FormMethod.Post))
+{
+    @Html.LabelFor(model => model.Email)
+    @Html.EditorFor(model => model.Email)
+
+    @Html.LabelFor(model => model.Password)
+    @Html.EditorFor(model => model.Password)
+
+    <input type="submit" value="Enviar">
+}
