@@ -9,6 +9,7 @@ namespace webleitour.Container.Models
     {
         public int Id { get; set; }
         public int UserId { get; set; }
+        public string UserName { get; set; }
         public string MessagePost { get; set; }
         public int Likes { get; set; }
         public DateTime PostDate { get; set; }

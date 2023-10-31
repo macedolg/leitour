@@ -13,7 +13,7 @@ namespace webleitour.Controllers
     public class PostController : Controller
     {
         // GET: Post
-        public async Task<ActionResult> Post(string nameUser) // Remova a declaração de nameUser aqui
+        public async Task<ActionResult> Post(string nameUser)
         {
             var apiUrl = "https://localhost:7109/api/Posts";
             var id = ViewBag.Id as int?;
