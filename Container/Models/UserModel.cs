@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace webleitour.Container.Models
     public class UserModel
     {
         public int Id { get; set; }
+        [JsonProperty("nameUser")]
         public string NameUser { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }

@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using NLog;
+using Newtonsoft.Json;
 using webleitour.Container.Models;
 
 namespace webleitour.Container.Controllers
@@ -23,10 +24,8 @@ namespace webleitour.Container.Controllers
             {
                 using (var httpClient = new HttpClient())
                 {
-                    // Configure o URL da API
                     string apiUrl = "https://localhost:7109/api/User/login";
 
-                    // Crie um objeto JSON com base no modelo e nos dados da view
                     var jsonContent = new
                     {
                         Id = 0,
@@ -38,38 +37,36 @@ namespace webleitour.Container.Controllers
                         CreatedDate = "2023-10-26T23:42:33.281Z"
                     };
 
-                    // Converte o objeto JSON em uma string
-                    string jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(jsonContent);
-
-                    // Configura o conteúdo da solicitação
+                    string jsonString = JsonConvert.SerializeObject(jsonContent);
                     var content = new StringContent(jsonString, System.Text.Encoding.UTF8, "application/json");
 
-                    // Faça a solicitação POST
                     HttpResponseMessage response = await httpClient.PostAsync(apiUrl, content);
 
                     if (response.IsSuccessStatusCode)
                     {
-                        // Leia a resposta JSON
                         var responseData = await response.Content.ReadAsStringAsync();
+                        var responseObj = JsonConvert.DeserializeAnonymousType(responseData, new { user = new { nameUser = "" } });
 
-                        // Registre a resposta no log
+                        string nameUser = responseObj.user.nameUser;
+
+                        var user = JsonConvert.DeserializeObject<UserModel>(responseData);
+
                         logger.Info($"Resposta da API: {responseData}");
+                        ViewBag.NameUser = nameUser;
 
-                        ViewBag.ResponseData = responseData;
-
-                        return View("Index", userModel); // Redireciona de volta para a página inicial com os valores do modelo
+                        return RedirectToAction("Post", "Post", new { nameUser = nameUser });
                     }
                     else
                     {
                         ViewBag.ErrorMessage = "Erro ao fazer a requisição à API.";
-                        return View("Index", userModel); // Redireciona de volta para a página inicial com os valores do modelo
+                        return View("Index", userModel);
                     }
                 }
             }
             catch (Exception ex)
             {
                 ViewBag.ErrorMessage = "Erro ao fazer a requisição à API.";
-                return View("Index", userModel); // Redireciona de volta para a página inicial com os valores do modelo
+                return View("Index", userModel);
             }
         }
     }

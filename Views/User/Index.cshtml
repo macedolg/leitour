@@ -1,28 +1,279 @@
 ﻿@model webleitour.Container.Models.UserModel
 
 @{
+    Layout = null;
     ViewBag.Title = "Resposta da API";
 }
 
-<h2>Resposta da API</h2>
+<div class="main-section" id="main-section">
+    <div class="container-login">
+        <div class="login right-login gap2">
+            <img src="Images/LogoLeitour.svg" alt="Logo">
+            <form asp-controller="User" asp-action="NewAccount" method="get">
+                <button type="submit" id="newAccountButton">Nova Conta</button>
+            </form>
+        </div>
 
-@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
-{
-    <p>@ViewBag.ErrorMessage</p>
-}
-else
-{
-    <pre>@ViewBag.ResponseData</pre>
-}
+        <div class="login left-login gap">
+            <h1>Login</h1>
+            <h3>Seja bem-vindo a Leitour</h3>
+                @using (Html.BeginForm("Login", "User", FormMethod.Post))
+                {
+                    <div class="form-login">
+                        <div class="email-login">
+                            @Html.LabelFor(model => model.Email)
+                            @Html.EditorFor(model => model.Email)
+                        </div>
+                        <div class="password-login">
+                            @Html.LabelFor(model => model.Password)
+                            @Html.EditorFor(model => model.Password)
+                        </div>
+                        <div class="button-login">
+                            <input type="submit" value="Enviar">
+                        </div>
+                    </div>
+                }
+        </div>
+    </div>
+</div>
 
-<h3>Insira seu email e senha:</h3>
-@using (Html.BeginForm("Login", "User", FormMethod.Post))
-{
-    @Html.LabelFor(model => model.Email)
-    @Html.EditorFor(model => model.Email)
 
-    @Html.LabelFor(model => model.Password)
-    @Html.EditorFor(model => model.Password)
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
 
-    <input type="submit" value="Enviar">
-}
+    a {
+        color: #000;
+        text-decoration: none;
+        color: #4D4D4E;
+        text-align: center;
+        font-size: 14px;
+        font-style: bold;
+        font-weight: 700;
+        line-height: normal;
+    }
+
+    label {
+        color: #4D4D4E;
+        text-align: center;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+
+    h1 {
+        color: #1358E3;
+        text-align: center;
+        font-size: 35px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: uppercase;
+    }
+
+    h3 {
+        color: #4D4D4E;
+        text-align: center;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+
+
+    .main-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 100vh;
+        background: linear-gradient(159deg, #05F 14.03%, #003398 94.64%);
+    }
+
+    .container-login {
+        display: flex;
+        width: 1240px;
+        height: 640px;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 40px;
+    }
+
+    .login {
+        display: flex;
+        width: 620px;
+        height: 320px;
+        flex-direction: column;
+    }
+
+    .right-login {
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .left-login {
+        justify-content: space-between;
+        align-items: center;
+        border-left: 4px solid #D3CBCB;
+    }
+
+    .rememberAndPassword {
+        display: flex;
+    }
+
+    .button-login {
+        width: 256px;
+        height: 56px;
+    }
+
+    #loginButton {
+        height: 100%;
+        width: 100%;
+        border-radius: 20px;
+        border: none;
+        background: linear-gradient(130deg, #145CEC 27.16%, #093284 92.98%);
+        color: #FFF;
+        text-align: center;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        cursor: pointer;
+    }
+
+    .new-account-button {
+        width: 256px;
+        height: 56px;
+    }
+
+    #newAccountButton {
+        background-color: transparent;
+        height: 100%;
+        width: 100%;
+        border-radius: 20px;
+        border-radius: 20px;
+        border: 2px solid #145CEC;
+        color: #1358E3;
+        text-align: center;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        cursor: pointer;
+    }
+
+    .form-login {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        gap: 28px;
+    }
+
+    .email-login {
+        position: relative;
+        display: flex;
+        justify-content: start;
+        align-self: center;
+        height: 80px;
+        width: 432px;
+        border-radius: 20px;
+        border: 2px solid #CEC1C1;
+    }
+
+    #email {
+        height: 100%;
+        width: 100%;
+        border-radius: 20px;
+        border: none;
+        padding-left: 20px;
+        font-size: 20px;
+        font-weight: 500;
+        color: #000;
+        border-left: 2px solid #000;
+    }
+
+        #email::placeholder {
+            color: #B5ADAD;
+        }
+
+        #email::-ms-check {
+            border-left: none;
+        }
+
+    .email-login-span {
+        position: relative;
+        width: 16%;
+        left: 4%;
+        top: 24%;
+    }
+
+
+    .password-login {
+        position: relative;
+        display: flex;
+        justify-content: start;
+        align-self: center;
+        height: 80px;
+        width: 432px;
+        border-radius: 20px;
+        border: 2px solid #CEC1C1;
+    }
+
+    #password {
+        height: 100%;
+        width: 100%;
+        border-radius: 20px;
+        border: none;
+        padding-left: 20px;
+        font-size: 20px;
+        font-weight: 500;
+        color: #000;
+        border-left: 2px solid #000;
+    }
+
+        #password::placeholder {
+            color: #B5ADAD;
+        }
+
+    .password-login-span {
+        position: relative;
+        width: 16%;
+        left: 4%;
+        top: 32%;
+        border-left: 4px #4D4D4E;
+    }
+
+    .gap {
+        gap: 20px;
+    }
+
+    .gap2 {
+        gap: 32%;
+    }
+
+    #remeberCheckBox {
+        cursor: pointer;
+    }
+
+    .rememberAndPassword {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #forgotPass {
+        align-items: end;
+    }
+</style>
