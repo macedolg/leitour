@@ -12,7 +12,6 @@ namespace webleitour.Controllers
 {
     public class PostController : Controller
     {
-        // GET: Post
         public async Task<ActionResult> Post(string nameUser)
         {
             var apiUrl = "https://localhost:7109/api/Posts";
@@ -43,8 +42,6 @@ namespace webleitour.Controllers
                     return View("Error");
                 }
             }
-
-            // Adicione nameUser à ViewBag
             ViewBag.NameUser = nameUser;
 
             return View(publicacoes);
