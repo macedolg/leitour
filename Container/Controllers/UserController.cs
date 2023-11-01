@@ -24,7 +24,7 @@ namespace webleitour.Container.Controllers
             {
                 using (var httpClient = new HttpClient())
                 {
-                    string apiUrl = "https://localhost:7109/api/User/login";
+                    string apiUrl = "https://localhost:5226/api/User/login";
 
                     var jsonContent = new
                     {
