@@ -1,4 +1,4 @@
-﻿
+﻿@model webleitour.Container.Models.UserGeralModel
 @{
     Layout = null;
 }
@@ -74,10 +74,10 @@
 
         <section class="section-perfil">
             <div class="perfil-user">
-                <img src="/" alt="user-pfp" class="perfil-pic">
+                <img src="@Model.ProfilePhoto" alt="user-pfp" class="perfil-pic">
                 <div class="perfil-content">
                     <div class="perfil-info">
-                        <h3>@@Username</h3>
+                        <h3>@Model.NameUser</h3>
                         <a href="#" class="btn-editprofile">Editar perfil</a>
                     </div>
                     <div class="perfil-info--content">
