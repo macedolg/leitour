@@ -12,6 +12,11 @@ namespace webleitour.Container.Controllers
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
+        public ActionResult Perfil()
+        {
+            return View(new UserModel());
+        }
+
         public ActionResult Index()
         {
             return View(new UserModel());
