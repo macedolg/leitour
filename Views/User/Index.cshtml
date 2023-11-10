@@ -8,10 +8,14 @@
 <div class="main-section" id="main-section">
     <div class="container-login">
         <div class="login right-login gap2">
-            <img src="Images/LogoLeitour.svg" alt="Logo">
-            <form asp-controller="User" asp-action="NewAccount" method="get">
-                <button type="submit" id="newAccountButton">Nova Conta</button>
-            </form>
+            <div class="login-img">
+            <img src="~/Images/LogoLeitour.svg" alt="Logo">
+            </div>
+            <div class="new-account-button">
+                <form asp-controller="User" asp-action="NewAccount" method="get">
+                    <button type="submit" id="newAccountButton">Nova Conta</button>
+                </form>
+            </div>
         </div>
 
         <div class="login left-login gap">
@@ -21,15 +25,15 @@
                 {
                     <div class="form-login">
                         <div class="email-login">
-                            @Html.LabelFor(model => model.Email)
-                            @Html.EditorFor(model => model.Email)
+                            <span class="email-login-span">@@</span>
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder = "leitour@gmail.com" } })
                         </div>
                         <div class="password-login">
-                            @Html.LabelFor(model => model.Password)
-                            @Html.EditorFor(model => model.Password)
+                            <span class="password-login-span"><img src="~/Images/key.svg"></span>
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Min. 8 caracteres" } })
                         </div>
                         <div class="button-login">
-                            <input type="submit" value="Enviar">
+                            <input type="submit" value="Enviar" id="loginButton">
                         </div>
                     </div>
                 }
@@ -122,7 +126,11 @@
         align-items: center;
         border-left: 4px solid #D3CBCB;
     }
-
+    .login-img {
+       display: flex;
+       width:128px;
+       height:156px;
+    }
     .rememberAndPassword {
         display: flex;
     }
@@ -210,10 +218,16 @@
         }
 
     .email-login-span {
-        position: relative;
+        font-weight: bold;
+        font-family: Outfit;
+        display: flex;
+        color: #1358E3;
+        font-size: 36px;
         width: 16%;
-        left: 4%;
-        top: 24%;
+        height: 100%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
     }
 
 

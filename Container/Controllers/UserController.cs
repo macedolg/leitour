@@ -24,7 +24,7 @@ namespace webleitour.Container.Controllers
             {
                 using (var httpClient = new HttpClient())
                 {
-                    string apiUrl = "https://localhost:7109/api/User/login";
+                    string apiUrl = "https://localhost:5226/api/User/login";
 
                     var jsonContent = new
                     {
@@ -69,5 +69,36 @@ namespace webleitour.Container.Controllers
                 return View("Index", userModel);
             }
         }
+
+        public async Task<ActionResult> Perfil(int id)
+        {
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    string apiUrl = $"https://localhost:5226/api/User/{id}";
+
+                    HttpResponseMessage response = await httpClient.GetAsync(apiUrl);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var responseData = await response.Content.ReadAsStringAsync();
+                        var user = JsonConvert.DeserializeObject<UserGeralModel>(responseData);
+
+                        return View(user);
+                    }
+                    else
+                    {
+                        return View("Index", new UserGeralModel());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return View("Index", new UserGeralModel());
+            }
+        }
+
+
     }
 }

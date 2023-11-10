@@ -14,7 +14,7 @@ namespace webleitour.Controllers
     {
         public async Task<ActionResult> Post(string nameUser)
         {
-            var apiUrl = "https://localhost:7109/api/Posts";
+            var apiUrl = "https://localhost:5226/api/Posts";
             var id = ViewBag.Id as int?;
 
             List<Post> publicacoes = new List<Post>();
@@ -27,14 +27,14 @@ namespace webleitour.Controllers
                 {
                     string content = await response.Content.ReadAsStringAsync();
 
-                    if (!string.IsNullOrEmpty(content))
+                    if (!string.IsNullOrEmpty(content) && !string.IsNullOrEmpty(nameUser))
                     {
                         publicacoes = JsonConvert.DeserializeObject<List<Post>>(content).OrderByDescending(post => post.PostDate).ToList();
                     }
                     else
                     {
                         ViewBag.ErrorMessage = "A resposta da API está vazia.";
-                        return View("Error");
+                        return RedirectToAction("Index", "User");
                     }
                 }
                 else

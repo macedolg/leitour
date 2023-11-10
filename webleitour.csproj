@@ -200,6 +200,7 @@
     <Compile Include="Container\Controllers\PostController.cs" />
     <Compile Include="Container\Controllers\UserController.cs" />
     <Compile Include="Container\Models\User.cs" />
+    <Compile Include="Container\Models\UserGeralModel.cs" />
     <Compile Include="Container\Models\UserModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -224,6 +225,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Perfil.css" />
     <Content Include="Content\post.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -264,6 +266,7 @@
     <Content Include="Views\Post\Post.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
