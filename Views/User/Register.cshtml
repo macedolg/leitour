@@ -1,0 +1,55 @@
+﻿@model webleitour.Container.Models.UserModel
+
+@{
+    Layout = null;
+}
+
+<div class="main-section" id="main-section">
+    <div class="container-register">
+        <div class="register right-register gap2">
+            <div class="register-img">
+                <img src="~/Images/LogoLeitour.svg" alt="Logo">
+            </div>
+            <div class="already-have-an-account-button">
+                <form asp-controller="User" asp-action="NewAccount" method="get">
+                    <button type="submit" id="newAccountButton">Nova Conta</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="register left-register gap">
+            <h1>Login</h1>
+            <h3>Seja bem-vindo a Leitour</h3>
+            @using (Html.BeginForm("RegisterPost", "User", FormMethod.Post))
+            {
+                <div class="form-register">
+                    <div class="nameuser-register">
+                        <span class="email-register-span"><img src="~/Images/nameuser.svg" /></span>
+                        @Html.EditorFor(model => model.NameUser, new { htmlAttributes = new { placeholder = "Insira seu apelído" } })
+                    </div>
+
+                    <div class="email-register">
+                        <span class="email-register-span">@@</span>
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder = "leitour@gmail.com" } })
+                    </div>
+
+                    @if()
+                    <div class="password-register">
+                        <span class="password-login-span"><img src="~/Images/key.svg"></span>
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Min. 8 caracteres" } })
+                    </div>
+
+                    
+                    <div class="confirm-password-register">
+                        <span class="password-login-span"><img src="~/Images/key.svg"></span>
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Min. 8 caracteres" } })
+                    </div>
+
+                    <div class="button-register">
+                        <input type="submit" value="Enviar" id="loginButton">
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
