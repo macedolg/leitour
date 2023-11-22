@@ -75,7 +75,6 @@ namespace webleitour.Container.Controllers
             }
         }
 
-        [HttpPost]
         public async Task<ActionResult> Registrar(UserModel user)
         {
             try
@@ -105,7 +104,6 @@ namespace webleitour.Container.Controllers
             }
             catch (Exception ex)
             {
-                // Configurando mensagem de erro genérico em caso de exceção
                 ViewBag.ErrorMessage = "Erro ao fazer a requisição à API.";
                 return View("Registrar", user);
             }

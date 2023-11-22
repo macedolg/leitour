@@ -12,6 +12,14 @@
             <form asp-controller="User" asp-action="NewAccount" method="get">
                 @Html.ActionLink("Nova Conta", "Registrar", "User", new {id="newAccountButton"})
             </form>
+            <div class="login-img">
+            <img src="~/Images/LogoLeitour.svg" alt="Logo">
+            </div>
+            <div class="new-account-button">
+                <form asp-controller="User" asp-action="NewAccount" method="get">
+                    <button type="submit" id="newAccountButton">Nova Conta</button>
+                </form>
+            </div>
         </div>
 
         <div class="login left-login gap">
@@ -30,6 +38,15 @@
                         </div>
                         <div class="button-login">
                             <input type="submit" value="Logar" id="loginButton">
+                            <span class="email-login-span">@@</span>
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder = "leitour@gmail.com" } })
+                        </div>
+                        <div class="password-login">
+                            <span class="password-login-span"><img src="~/Images/key.svg"></span>
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Min. 8 caracteres" } })
+                        </div>
+                        <div class="button-login">
+                            <input type="submit" value="Enviar" id="loginButton">
                         </div>
                     </div>
                 }
@@ -123,7 +140,11 @@
         align-items: center;
         border-left: 4px solid #D3CBCB;
     }
-
+    .login-img {
+       display: flex;
+       width:128px;
+       height:156px;
+    }
     .rememberAndPassword {
         display: flex;
     }
@@ -142,9 +163,7 @@
         color: #FFF;
         text-align: center;
         font-size: 14px;
-        font-style: normal;
         font-weight: 700;
-        line-height: normal;
         cursor: pointer;
     }
 
@@ -194,7 +213,6 @@
     #email {
         height: 100%;
         width: 100%;
-        border-radius: 20px;
         border: none;
         padding-left: 20px;
         font-size: 20px;
@@ -212,10 +230,16 @@
         }
 
     .email-login-span {
-        position: relative;
+        font-weight: bold;
+        font-family: Outfit;
+        display: flex;
+        color: #1358E3;
+        font-size: 32px;
         width: 16%;
-        left: 4%;
-        top: 24%;
+        height: 100%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
     }
 
 
@@ -233,7 +257,6 @@
     #password {
         height: 100%;
         width: 100%;
-        border-radius: 20px;
         border: none;
         padding-left: 20px;
         font-size: 20px;
@@ -247,10 +270,12 @@
         }
 
     .password-login-span {
-        position: relative;
+        display:flex;
+        height: 100%;
         width: 16%;
-        left: 4%;
-        top: 32%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
         border-left: 4px #4D4D4E;
     }
 

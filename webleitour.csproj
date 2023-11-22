@@ -274,6 +274,7 @@
     <Content Include="Images\Vector-1.svg" />
     <Content Include="Images\Vector-2.svg" />
     <Content Include="Images\Vector.svg" />
+    <Content Include="Images\nameuser.svg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -312,6 +313,7 @@
     <Content Include="Views\Book\SavedBooks.cshtml" />
     <Content Include="Views\Post\SearchResult.cshtml" />
     <Content Include="Views\User\Registrar.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

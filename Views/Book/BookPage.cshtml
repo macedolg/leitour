@@ -101,14 +101,14 @@
 
                     <div class="btnBook">
 
-                        <div class="btn Salvar">
+                        <button class="btn Salvar">
                             <img src="~/Images/BotaoSave-2.svg" alt="Salvar Livro">
                             Salvar livro
-                        </div>
-                        <div class="btn Anotacao">
+                        </button>
+                        <button class="btn Anotacao">
                             <img src="~/Images/BotaoAnnotation.svg" alt="Anotacao">
                             Anotação
-                        </div>
+                        </button>
                     </div>
 
                     <div class="book-description">
@@ -151,50 +151,7 @@
         </section>
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script>
-        if (window.jQuery) {
-            console.log("jQuery está carregado!");
-        } else {
-            console.log("jQuery não está funcionando corretamente.");
-        }
-
-        (document).ready(function () {
-            $('.Salvar').on('click', function () {
-                console.log("Clicou na div!");
-                saveBook();
-            });
-        });
-
-        function saveBook() {
-            var bookToSave = {
-                id: 0,
-                userId: getUserIdFromCookie(),
-                public: true,
-                bookKey: $("#Key").val(),
-                bookCover: $("#Cover").val(),
-                bookTitle: $("#Title").val()
-            };
-
-            $.ajax({
-                url: 'https://localhost:5226/api/SavedBook',
-                type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(bookToSave),
-                success: function (response) {
-                    window.location.href = "/Book/BookPage";
-                },
-                error: function (xhr, status, error) {
-                    console.error(error);
-                    window.location.href = "/Book/Error";
-                }
-            });
-        }
-        function getUserIdFromCookie() {
-            return 6; // Valor de exemplo
-        }
-    </script>
     <script>
         const recommendation = document.querySelector('.recommendation');
         let isDown = false;
@@ -222,6 +179,59 @@
             const walk = (x - startX) * 3;
             recommendation.scrollLeft = scrollLeft - walk;
         });
+
+        document.addEventListener("DOMContentLoaded", function () {
+    const salvarLivroBtn = document.querySelector('.btn.Salvar');
+
+    if (salvarLivroBtn) {
+        salvarLivroBtn.addEventListener('click', function () {
+            const bookData = {
+                bookKey: '@Model.Key',
+                bookCover: '@Model.Cover',
+                bookTitle: '@Model.Title'
+            };
+
+            const token = getCookie('AuthToken');
+            const userId = getCookie('UserID');
+
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    userId: userId,
+                    public: true,
+                    bookKey: bookData.bookKey,
+                    bookCover: bookData.bookCover,
+                    bookTitle: bookData.bookTitle
+                })
+            };
+
+            fetch('https://localhost:5226/api/savedbooks', requestOptions)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to save book');
+                    }
+                    // Handle successful response
+                    // Maybe show a success message to the user
+                })
+                .catch(error => {
+                    console.error('Error saving book:', error);
+                    // Handle error, show error message to the user, etc.
+                });
+        });
+    }
+
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+});
+
+
 
     </script>
 

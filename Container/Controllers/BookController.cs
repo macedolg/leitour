@@ -69,11 +69,6 @@ namespace webleitour.Container.Controllers
         {
             return View();
         }
-
-        public async Task<ActionResult> SavedBooks()
-        {
-            return View();
-        }
     }
 }
 
