@@ -198,7 +198,7 @@
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    'token': `${token}`
                 },
                 body: JSON.stringify({
                     userId: userId,
@@ -214,22 +214,19 @@
                     if (!response.ok) {
                         throw new Error('Failed to save book');
                     }
-                    // Handle successful response
-                    // Maybe show a success message to the user
                 })
                 .catch(error => {
                     console.error('Error saving book:', error);
-                    // Handle error, show error message to the user, etc.
                 });
-        });
-    }
+            });
+        }
 
-    function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
-    }
-});
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+    });
 
 
 
