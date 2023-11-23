@@ -20,7 +20,6 @@ namespace webleitour.Controllers
             int userId;
             if (Request.Cookies["UserID"] != null && int.TryParse(Request.Cookies["UserID"].Value, out userId))
             {
-
                 var newPost = new
                 {
                     id = 0,
@@ -35,7 +34,8 @@ namespace webleitour.Controllers
                     if (Request.Cookies["AuthToken"] != null)
                     {
                         string token = Request.Cookies["AuthToken"].Value;
-                        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                        client.DefaultRequestHeaders.Remove("token");
+                        client.DefaultRequestHeaders.Add("token", token);
                     }
 
                     var postContent = new StringContent(JsonConvert.SerializeObject(newPost), Encoding.UTF8, "application/json");
@@ -116,7 +116,7 @@ namespace webleitour.Controllers
             int userId;
             if (Request.Cookies["UserID"] != null && int.TryParse(Request.Cookies["UserID"].Value, out userId))
             {
-                var apiUrlSearch = $"https://localhost:5226/api/SearchBy/search/{query}"; // URL da sua API de busca
+                var apiUrlSearch = $"https://localhost:5226/api/SearchBy/search/{query}";
 
                 UserModel user = new UserModel();
                 List<Post> searchResults = new List<Post>();
