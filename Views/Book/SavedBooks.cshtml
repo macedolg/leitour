@@ -1,6 +1,6 @@
 ﻿
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutMenu.cshtml";
 }
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -11,67 +11,7 @@
     <link href="~/Content/SavedBook.css" rel="stylesheet" />
 </head>
 <body>
-    <nav>
-        <div class="nav-logo"><img src="/" alt="Logo Leitour"></div>
-        <div class="nav-searchbar">
-            <input type="text" placeholder="Pesquisar" class="search-input"><button>
-                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none">
-                    <path d="M11.25 2.25C9.81761 2.24985 8.40588 2.59158 7.13215 3.24679C5.85841 3.90201 4.75946 4.85178 3.92664 6.01716C3.09381 7.18254 2.55118 8.52987 2.34382 9.94716C2.13647 11.3644 2.2704 12.8108 2.73447 14.1659C3.19854 15.521 3.97935 16.7458 5.012 17.7384C6.04466 18.7311 7.29932 19.4629 8.67171 19.8731C10.0441 20.2833 11.4946 20.36 12.9026 20.0968C14.3106 19.8336 15.6354 19.2382 16.767 18.36L22.8285 24.4192C22.9323 24.5267 23.0564 24.6124 23.1937 24.6714C23.3309 24.7303 23.4785 24.7614 23.6279 24.7627C23.7773 24.764 23.9254 24.7355 24.0637 24.6789C24.2019 24.6224 24.3276 24.5388 24.4332 24.4332C24.5388 24.3276 24.6223 24.202 24.6789 24.0637C24.7355 23.9254 24.7639 23.7773 24.7626 23.6279C24.7613 23.4785 24.7303 23.3309 24.6714 23.1937C24.6124 23.0564 24.5267 22.9323 24.4192 22.8285L18.36 16.7692C19.3928 15.4389 20.0317 13.8454 20.2038 12.17C20.376 10.4946 20.0746 8.80446 19.3339 7.29185C18.5932 5.77924 17.4429 4.50483 16.0138 3.61353C14.5847 2.72223 12.9342 2.24981 11.25 2.25ZM4.49999 11.25C4.49999 9.45979 5.21115 7.7429 6.47702 6.47703C7.74289 5.21116 9.45977 4.5 11.25 4.5C13.0402 4.5 14.7571 5.21116 16.023 6.47703C17.2888 7.7429 18 9.45979 18 11.25C18 13.0402 17.2888 14.7571 16.023 16.023C14.7571 17.2888 13.0402 18 11.25 18C9.45977 18 7.74289 17.2888 6.47702 16.023C5.21115 14.7571 4.49999 13.0402 4.49999 11.25Z" fill="#7E7E7E" />
-                </svg>
-            </button>
-        </div>
-        <button>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
-                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
-            </svg>
-        </button>
-    </nav>
-
-    <main class="main">
-        <aside class="aside-home">
-            <div class="menu">
-                <div class="home user">
-                    <div class="user-menu--btn">
-                        <img src="~/Images/Lollipop" alt="imagem do usuário" class="user-img">
-                        <div class="user-menu--user-data">
-                            <h3>@ViewBag.NameUser</h3>
-                            <h4>@@User</h4>
-                        </div>
-                    </div>
-                </div>
-
-                <a href="#" class="menu-feed--btn">
-                    <img src="~/Images/Feed.svg" alt="Feed imagem">
-                    Feed
-                </a>
-                <a href="#" class="menu-feed--btn btnSelected">
-                    <img src="~/Images/Vector-1.svg" alt="Perfil imagem">
-                    Perfil
-                </a>
-                <a href="#" class="menu-feed--btn">
-                    <img src="~/Images/Vector-2.svg" alt="Amigos imagem">
-                    Amigos
-                </a>
-                <a href="#" class="menu-feed--btn">
-                    <img src="~/Images/Group.svg" alt="Livros imagem">
-                    Livros
-                </a>
-                <a href="#" class="menu-feed--btn">
-                    <img src="~/Images/Vector.svg" alt="Itens salvos imagem">
-                    Itens salvos
-                </a>
-                <a href="#" class="menu-feed--btn">
-                    <img src="~/Images/fluent_people-community-24-regular.svg" alt="Conhecer imagem">
-                    Conhecer
-                </a>
-                <a href="#" class="menu-feed--btn">
-                    <img src="~/Images/CircleMais.svg" alt="Mais imagem">
-                    Mais
-                </a>
-            </div>
-        </aside>
-
-        <section class="booksSaved">
+            <section class="booksSaved">
             <main class="savedbooks">
                 <div class="saved">
                     <div class="book">

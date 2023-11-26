@@ -7,11 +7,13 @@ using Newtonsoft.Json;
 using webleitour.Container.Models;
 using System.Web;
 
-namespace webleitour.Container.Controllers
+namespace webleitour.Controllers
 {
     public class UserController : Controller
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
+
+        public ActionResult Teste() { return View(); }
 
         public ActionResult Index()
         {
@@ -109,7 +111,34 @@ namespace webleitour.Container.Controllers
             }
         }
 
+        public async Task<ActionResult> Perfil(int id)
+        {
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    string apiUrl = $"https://localhost:5226/api/User/{id}";
 
+                    HttpResponseMessage response = await httpClient.GetAsync(apiUrl);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var responseData = await response.Content.ReadAsStringAsync();
+                        var user = JsonConvert.DeserializeObject<UserGeralModel>(responseData);
+
+                        return View(user);
+                    }
+                    else
+                    {
+                        return View("Index", new UserGeralModel());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return View("Index", new UserGeralModel());
+            }
+        }
 
     }
 }

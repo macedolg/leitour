@@ -217,6 +217,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Container\Controllers\BaseController.cs" />
     <Compile Include="Container\Controllers\BookController.cs" />
     <Compile Include="Container\Controllers\HomeController.cs" />
     <Compile Include="Container\Controllers\PostController.cs" />
@@ -308,15 +309,19 @@
     <Content Include="Views\Post\Post.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\User\Perfil.cshtml" />
     <Content Include="Views\Book\BookPage.cshtml" />
     <Content Include="Views\Book\SavedBooks.cshtml" />
     <Content Include="Views\Post\SearchResult.cshtml" />
     <Content Include="Views\User\Registrar.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\Shared\_LayoutMenu.cshtml" />
+    <Content Include="Views\Shared\_PartialUser.cshtml" />
+    <Content Include="Views\User\Perfil.cshtml" />
+    <Content Include="Views\User\Teste.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

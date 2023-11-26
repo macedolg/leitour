@@ -65,6 +65,8 @@ namespace webleitour.Container.Controllers
             }
         }
 
+        public ActionResult SavedBooks() { return View(); }
+
         public async Task<ActionResult> Annotation()
         {
             return View();
