@@ -73,11 +73,13 @@
                             foreach (var authorBook in ViewBag.AuthorBooks)
                             {
                                 <div class="book-recommendation">
-                                    <img src="@authorBook.Cover" height="178px" width="116px" alt="Book cover recomended">
-                                    <div class="recommendation-info">
-                                        <h5>@authorBook.Title</h5>
-                                        <h6>@authorBook.Authors</h6>
-                                    </div>
+                                    <a href="@Url.Action("BookPage", "Book", new { ISBN = authorBook.ISBN_10 != null ? authorBook.ISBN_10 : authorBook.ISBN_13 })">
+                                        <img src="@authorBook.Cover" height="178px" width="116px" alt="Book cover recommended">
+                                        <div class="recommendation-info">
+                                            <h5>@authorBook.Title</h5>
+                                            <h6>@authorBook.Authors</h6>
+                                        </div>
+                                    </a>
                                 </div>
                             }
                         }
