@@ -1,0 +1,178 @@
+﻿@model webleitour.Container.Models.Book
+@{
+    Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="~/Content/BookPage.css" rel="stylesheet" />
+</head>
+<body>
+        <section class="bookPage">
+            <div class="book-info">
+                <h2>@Model.Title</h2>
+                <h3><span>De</span> @Model.Authors</h3>
+                <div class="book-release">
+                    <div class="book-release--info">
+                        <div class="release-box">
+                            <img src="~/Images/uil_calender.svg" alt="ICON">
+                            <h4 class="title">Publicação</h4>
+                            <h4>@Model.PublishedDate</h4>
+                        </div>
+                        <div class="release-box">
+                            <img src="~/Images/mingcute_building-5-fill.svg" alt="ICON">
+                            <h4 class="title">Editora</h4>
+                            <h4>@Model.Publisher</h4>
+                        </div>
+                        <div class="release-box">
+                            <img src="~/Images/mingcute_world-2-fill.svg" alt="ICON">
+                            <h4 class="title">Idioma</h4>
+                            <h4>@Model.Language</h4>
+                        </div>
+                        <div class="release-box">
+                            <img src="~/Images/fluent_note-16-filled.svg" alt="ICON">
+                            <h4 class="title">Páginas</h4>
+                            <h4>@Model.Pages</h4>
+                        </div>
+                    </div>
+
+                    <div class="btnBook">
+
+                        <button class="btn Salvar">
+                            <img src="~/Images/BotaoSave-2.svg" alt="Salvar Livro">
+                            Salvar livro
+                        </button>
+                        <button class="btn Anotacao">
+                            <img src="~/Images/BotaoAnnotation.svg" alt="Anotacao">
+                            Anotação
+                        </button>
+                    </div>
+
+                    <div class="book-description">
+                        <h3>Sobre este livro <span>></span></h3>
+                        <p>@Model.Description</p>
+                        <div class="book-category">
+                            <div class="category">
+                                #Categoria
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="book-img">
+                <img src="@Model.Cover" alt="Book cover" class="imgcover" height="490px" width="320px">
+                <div class="recommended">
+                    <h4>Mais de @Model.Authors <span>></span></h4>
+                    <div class="recommendation">
+                        @if (ViewBag.AuthorBooks != null)
+                        {
+                            foreach (var authorBook in ViewBag.AuthorBooks)
+                            {
+                                <div class="book-recommendation">
+                                    <a href="@Url.Action("BookPage", "Book", new { ISBN = authorBook.ISBN_10 != null ? authorBook.ISBN_10 : authorBook.ISBN_13 })">
+                                        <img src="@authorBook.Cover" height="178px" width="116px" alt="Book cover recommended">
+                                        <div class="recommendation-info">
+                                            <h5>@authorBook.Title</h5>
+                                            <h6>@authorBook.Authors</h6>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <p>Nenhum outro livro do mesmo autor encontrado.</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <script>
+        const recommendation = document.querySelector('.recommendation');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        recommendation.addEventListener('mousedown', (e) => {
+            isDown = true;
+            recommendation.classList.add('active');
+            startX = e.pageX - recommendation.offsetLeft;
+            scrollLeft = recommendation.scrollLeft;
+        });
+        recommendation.addEventListener('mouseleave', () => {
+            isDown = false;
+            recommendation.classList.remove('active');
+        });
+        recommendation.addEventListener('mouseup', () => {
+            isDown = false;
+            recommendation.classList.remove('active');
+        });
+        recommendation.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - recommendation.offsetLeft;
+            const walk = (x - startX) * 3;
+            recommendation.scrollLeft = scrollLeft - walk;
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+    const salvarLivroBtn = document.querySelector('.btn.Salvar');
+
+    if (salvarLivroBtn) {
+        salvarLivroBtn.addEventListener('click', function () {
+            const bookData = {
+                bookKey: '@Model.Key',
+                bookCover: '@Model.Cover',
+                bookTitle: '@Model.Title'
+            };
+
+            const token = getCookie('AuthToken');
+            const userId = getCookie('UserID');
+
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': `${token}`
+                },
+                body: JSON.stringify({
+                    userId: userId,
+                    public: true,
+                    bookKey: bookData.bookKey,
+                    bookCover: bookData.bookCover,
+                    bookTitle: bookData.bookTitle
+                })
+            };
+
+            fetch('https://localhost:5226/api/savedbooks', requestOptions)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to save book');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error saving book:', error);
+                });
+            });
+        }
+
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+    });
+
+
+
+    </script>
+
+</body>
+</html>

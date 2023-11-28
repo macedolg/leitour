@@ -70,6 +70,18 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.Primitives.7.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.IdentityModel.Abstractions, Version=7.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Abstractions.7.0.3\lib\net472\Microsoft.IdentityModel.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=7.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.JsonWebTokens.7.0.3\lib\net472\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=7.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Logging.7.0.3\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=7.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Tokens.7.0.3\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -100,6 +112,9 @@
       <HintPath>packages\System.Diagnostics.DiagnosticSource.7.0.0\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=7.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\System.IdentityModel.Tokens.Jwt.7.0.3\lib\net472\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
@@ -122,6 +137,12 @@
       <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.5.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encodings.Web.4.7.2\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Json.4.7.2\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
@@ -196,9 +217,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Container\Controllers\BaseController.cs" />
+    <Compile Include="Container\Controllers\BookController.cs" />
     <Compile Include="Container\Controllers\HomeController.cs" />
     <Compile Include="Container\Controllers\PostController.cs" />
     <Compile Include="Container\Controllers\UserController.cs" />
+    <Compile Include="Container\Models\Book.cs" />
+    <Compile Include="Container\Models\CreatePost.cs" />
     <Compile Include="Container\Models\User.cs" />
     <Compile Include="Container\Models\UserGeralModel.cs" />
     <Compile Include="Container\Models\UserModel.cs" />
@@ -209,6 +234,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\BookPage.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -227,12 +253,28 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Perfil.css" />
     <Content Include="Content\post.css" />
+    <Content Include="Content\SavedBook.css" />
+    <Content Include="Content\SearchResult.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\arroba.svg" />
+    <Content Include="Images\BotaoSave-1.svg" />
+    <Content Include="Images\BotaoSave-2.svg" />
+    <Content Include="Images\CircleMais.svg" />
+    <Content Include="Images\Feed.svg" />
+    <Content Include="Images\fluent_note-16-filled.svg" />
+    <Content Include="Images\fluent_people-community-24-regular.svg" />
+    <Content Include="Images\Group.svg" />
     <Content Include="Images\key.svg" />
     <Content Include="Images\LogoLeitour.svg" />
+    <Content Include="Images\Mask group.svg" />
+    <Content Include="Images\mingcute_building-5-fill.svg" />
+    <Content Include="Images\mingcute_world-2-fill.svg" />
+    <Content Include="Images\uil_calender.svg" />
+    <Content Include="Images\Vector-1.svg" />
+    <Content Include="Images\Vector-2.svg" />
+    <Content Include="Images\Vector.svg" />
     <Content Include="Images\nameuser.svg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -267,11 +309,19 @@
     <Content Include="Views\Post\Post.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\User\Perfil.cshtml" />
+    <Content Include="Views\Book\BookPage.cshtml" />
+    <Content Include="Views\Book\SavedBooks.cshtml" />
+    <Content Include="Views\Post\SearchResult.cshtml" />
+    <Content Include="Views\User\Registrar.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\Shared\_LayoutMenu.cshtml" />
+    <Content Include="Views\Shared\_PartialUser.cshtml" />
+    <Content Include="Views\User\Perfil.cshtml" />
+    <Content Include="Views\User\Teste.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

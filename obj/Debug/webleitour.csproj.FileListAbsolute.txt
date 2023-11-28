@@ -778,6 +778,20 @@ C:\Users\3jd\Desktop\3DS\LeitourAsp\obj\Debug\webleitour.csproj.CoreCompileInput
 C:\Users\3jd\Desktop\3DS\LeitourAsp\obj\Debug\webleitour.csproj.CopyComplete
 C:\Users\3jd\Desktop\3DS\LeitourAsp\obj\Debug\webleitour.dll
 C:\Users\3jd\Desktop\3DS\LeitourAsp\obj\Debug\webleitour.pdb
+C:\Users\lauan\Desktop\LeitourAsp\bin\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\System.Text.Encodings.Web.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\System.Text.Json.dll
+C:\Users\lauan\Desktop\LeitourAsp\bin\Microsoft.IdentityModel.Abstractions.xml
+C:\Users\lauan\Desktop\LeitourAsp\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\lauan\Desktop\LeitourAsp\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\lauan\Desktop\LeitourAsp\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\lauan\Desktop\LeitourAsp\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\lauan\Desktop\LeitourAsp\bin\System.Text.Encodings.Web.xml
+C:\Users\lauan\Desktop\LeitourAsp\bin\System.Text.Json.xml
 C:\Users\3jd\Desktop\LeitourAsp\bin\webleitour.dll.config
 C:\Users\3jd\Desktop\LeitourAsp\bin\webleitour.dll
 C:\Users\3jd\Desktop\LeitourAsp\bin\webleitour.pdb
@@ -1034,3 +1048,4 @@ C:\Users\2ds\Desktop\leitour\obj\Debug\webleitour.csproj.CoreCompileInputs.cache
 C:\Users\2ds\Desktop\leitour\obj\Debug\webleitour.csproj.CopyComplete
 C:\Users\2ds\Desktop\leitour\obj\Debug\webleitour.dll
 C:\Users\2ds\Desktop\leitour\obj\Debug\webleitour.pdb
+>>>>>>> 81b2ce03727fe88d777eaf442cfa9b19cb56763b

@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*ESTILO TEMPORÁRIO PARA O DROPDOWN*/
+        .search-dropdown {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1;
+        }
+
+            .search-dropdown ul {
+                padding: 0;
+                margin: 0;
+                list-style-type: none;
+            }
+
+            .search-dropdown li {
+                padding: 8px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+            }
+
+                .search-dropdown li:hover {
+                    background-color: #f1f1f1;
+                }
+
+            .search-dropdown img {
+                width: 40px;
+                height: 40px;
+                margin-right: 10px;
+            }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-logo"><img src="/" alt="Logo Leitour"></div>
+        <div class="search-container">
+            <input type="text" placeholder="Pesquisar" class="search-input" oninput="search(event)">
+            <div class="search-dropdown">
+                <ul class="search-results"></ul>
+            </div>
+        </div>
+        <div class="search-results"></div>
+        <button>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
+            </svg>
+        </button>
+    </nav>
+
+    <main class="main">
+        <aside class="aside-home">
+            <div class="menu">
+                <div class="home user">
+                    <div class="user-menu--btn">
+                        <img src="/" alt="imagem do usuário" class="user-img">
+                        <div class="user-menu--user-data">
+                            <h3 id="nameUser">Carregando...</h3>
+                            <h4>@@User</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="menu-feed--btn btnSelected">
+                    <img src="~/Images/Feed.svg" alt="Feed imagem">
+                    Feed
+                </a>
+                <a href="#" class="menu-feed--btn ">
+                    <img src="~/Images/Vector-1.svg" alt="Perfil imagem">
+                    Perfil
+                </a>
+                <a href="#" class="menu-feed--btn">
+                    <img src="~/Images/Vector-2.svg" alt="Amigos imagem">
+                    Amigos
+                </a>
+                <a href="#" class="menu-feed--btn">
+                    <img src="~/Images/Group.svg" alt="Livros imagem">
+                    Livros
+                </a>
+                <a href="#" class="menu-feed--btn">
+                    <img src="~/Images/Vector.svg" alt="Itens salvos imagem">
+                    Itens salvos
+                </a>
+                <a href="#" class="menu-feed--btn">
+                    <img src="~/Images/fluent_people-community-24-regular.svg" alt="Conhecer imagem">
+                    Conhecer
+                </a>
+                <a href="#" class="menu-feed--btn">
+                    <img src="~/Images/CircleMais.svg" alt="Mais imagem">
+                    Mais
+                </a>
+            </div>
+        </aside>
+        <script>
+            function fetchUserData() {
+                var userID = getCookie("UserID");
+
+                if (userID) {
+                    fetch(`https://localhost:5226/api/User/${userID}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById("nameUser").innerText = data.nameUser;
+                            document.querySelector(".user-img").src = data.profilePhoto;
+                        })
+                        .catch(error => {
+                            console.error('Ocorreu um erro:', error);
+                        });
+                } else {
+                    console.error('Cookie "UserID" não encontrado.');
+                }
+            }
+
+            function getCookie(cookieName) {
+                const name = cookieName + "=";
+                const decodedCookie = decodeURIComponent(document.cookie);
+                const cookieArray = decodedCookie.split(';');
+
+                for (let i = 0; i < cookieArray.length; i++) {
+                    let cookie = cookieArray[i];
+                    while (cookie.charAt(0) === ' ') {
+                        cookie = cookie.substring(1);
+                    }
+                    if (cookie.indexOf(name) === 0) {
+                        return cookie.substring(name.length, cookie.length);
+                    }
+                }
+                return "";
+            }
+
+            fetchUserData();
+
+
+            let typingTimer;
+            const doneTypingInterval = 500;
+
+            function search(event) {
+                clearTimeout(typingTimer);
+
+                const query = event.target.value.trim();
+                if (query === '') {
+                    hideDropdown();
+                    return;
+                }
+
+                typingTimer = setTimeout(() => {
+                    fetchSearchResults(query);
+                }, doneTypingInterval);
+            }
+
+            function fetchSearchResults(query) {
+                fetch(`https://localhost:5226/api/SearchBy/search/${query}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        displayResults(data);
+                        showDropdown();
+                    })
+                    .catch(error => {
+                        console.error('Erro ao buscar resultados:', error);
+                    });
+            }
+
+            function displayResults(results) {
+                const dropdownList = document.querySelector('.search-dropdown ul');
+                dropdownList.innerHTML = '';
+
+                results.forEach(result => {
+                    const listItem = document.createElement('li');
+                    const coverImage = document.createElement('img');
+                    coverImage.src = result.cover;
+                    coverImage.alt = 'Capa do livro';
+                    listItem.appendChild(coverImage);
+
+                    const title = document.createElement('span');
+                    title.textContent = result.title;
+                    listItem.appendChild(title);
+
+                    let isbn = result.isbN_10 || result.isbN_13;
+                    console.log(isbn);
+                    const link = document.createElement('a');
+                    link.href = `/Book/BookPage/${isbn}`;
+                    link.appendChild(listItem);
+
+                    dropdownList.appendChild(link);
+                });
+            }
+
+            function showDropdown() {
+                const dropdown = document.querySelector('.search-dropdown');
+                dropdown.style.display = 'block';
+            }
+
+            function hideDropdown() {
+                const dropdown = document.querySelector('.search-dropdown');
+                dropdown.style.display = 'none';
+            }
+
+        </script>
+
+@RenderBody()

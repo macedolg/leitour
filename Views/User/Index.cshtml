@@ -8,6 +8,10 @@
 <div class="main-section" id="main-section">
     <div class="container-login">
         <div class="login right-login gap2">
+            <img src="~/Images/LogoLeitour.svg" alt="Logo">
+            <form asp-controller="User" asp-action="NewAccount" method="get">
+                @Html.ActionLink("Nova Conta", "Registrar", "User", new {id="newAccountButton"})
+            </form>
             <div class="login-img">
             <img src="~/Images/LogoLeitour.svg" alt="Logo">
             </div>
@@ -25,6 +29,15 @@
                 {
                     <div class="form-login">
                         <div class="email-login">
+                            
+                            @Html.EditorFor(model => model.Email, new {placeholder="Email"})
+                        </div>
+                        <div class="password-login">
+                            
+                            @Html.PasswordFor(model => model.Password, new { placeholder = "Password" })
+                        </div>
+                        <div class="button-login">
+                            <input type="submit" value="Logar" id="loginButton">
                             <span class="email-login-span">@@</span>
                             @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder = "leitour@gmail.com" } })
                         </div>
@@ -47,6 +60,7 @@
         padding: 0;
         margin: 0;
         box-sizing: border-box;
+        font-family: Arial;
     }
 
     a {
@@ -172,6 +186,7 @@
         font-weight: 700;
         line-height: normal;
         cursor: pointer;
+        padding: 1rem;
     }
 
     .form-login {

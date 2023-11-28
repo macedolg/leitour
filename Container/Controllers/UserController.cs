@@ -5,19 +5,17 @@ using System.Web.Mvc;
 using NLog;
 using Newtonsoft.Json;
 using webleitour.Container.Models;
+using System.Web;
 
-namespace webleitour.Container.Controllers
+namespace webleitour.Controllers
 {
     public class UserController : Controller
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
-        public ActionResult Index()
-        {
-            return View(new UserModel());
-        }
+        public ActionResult Teste() { return View(); }
 
-        public ActionResult Register()
+        public ActionResult Index()
         {
             return View(new UserModel());
         }
@@ -50,16 +48,20 @@ namespace webleitour.Container.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         var responseData = await response.Content.ReadAsStringAsync();
-                        var responseObj = JsonConvert.DeserializeAnonymousType(responseData, new { user = new { nameUser = "" } });
+                        var responseObject = JsonConvert.DeserializeObject<dynamic>(responseData);
 
-                        string nameUser = responseObj.user.nameUser;
+                        string token = responseObject.token;
+                        int userId = responseObject.user.id;
 
-                        var user = JsonConvert.DeserializeObject<UserModel>(responseData);
+                        logger.Info($"Token saved in cookie: {token}");
 
-                        logger.Info($"Resposta da API: {responseData}");
-                        ViewBag.NameUser = nameUser;
+                        var tokenCookie = new HttpCookie("AuthToken", token);
+                        Response.Cookies.Add(tokenCookie);
 
-                        return RedirectToAction("Post", "Post", new { nameUser = nameUser });
+                        var idCookie = new HttpCookie("UserID", userId.ToString());
+                        Response.Cookies.Add(idCookie);
+
+                        return RedirectToAction("Post", "Post");
                     }
                     else
                     {
@@ -75,56 +77,37 @@ namespace webleitour.Container.Controllers
             }
         }
 
-        [HttpPost]
-        public async Task<ActionResult> RegisterPost(UserModel userModel)
+        public async Task<ActionResult> Registrar(UserModel user)
         {
             try
             {
                 using (var httpClient = new HttpClient())
                 {
-                    string apiUrl = "https://localhost:5226/api/User/register";
+                    string apiUrl = "https://localhost:5226/api/registrar";
 
-                    var jsonContent = new
-                    {
-                        Id = 0,
-                        NameUser = "string",
-                        Email = userModel.Email,
-                        Password = userModel.Password,
-                        ProfilePhoto = "string",
-                        Access = "string",
-                        CreatedDate = "2023-10-26T23:42:33.281Z"
-                    };
-
-                    string jsonString = JsonConvert.SerializeObject(jsonContent);
+                    user.ProfilePhoto = "https://wallpapers.com/images/hd/basic-default-pfp-pxi77qv5o0zuz8j3.jpg";
+                    user.Access = "COMUM";
+                    user.CreatedDate = DateTime.UtcNow;
+                    var jsonString = JsonConvert.SerializeObject(user);
                     var content = new StringContent(jsonString, System.Text.Encoding.UTF8, "application/json");
 
                     HttpResponseMessage response = await httpClient.PostAsync(apiUrl, content);
 
                     if (response.IsSuccessStatusCode)
                     {
-                        var responseData = await response.Content.ReadAsStringAsync();
-                        var responseObj = JsonConvert.DeserializeAnonymousType(responseData, new { user = new { nameUser = "" } });
-
-                        string nameUser = responseObj.user.nameUser;
-
-                        var user = JsonConvert.DeserializeObject<UserModel>(responseData);
-
-                        logger.Info($"Resposta da API: {responseData}");
-                        ViewBag.NameUser = nameUser;
-
-                        return RedirectToAction("Index", new { nameUser = nameUser });
+                        return RedirectToAction("Index", "User");
                     }
                     else
                     {
                         ViewBag.ErrorMessage = "Erro ao fazer a requisição à API.";
-                        return View("Register", userModel);
+                        return View("Registrar", user);
                     }
                 }
             }
             catch (Exception ex)
             {
                 ViewBag.ErrorMessage = "Erro ao fazer a requisição à API.";
-                return View("Index", userModel);
+                return View("Registrar", user);
             }
         }
 
@@ -157,5 +140,5 @@ namespace webleitour.Container.Controllers
             }
         }
 
-}
+    }
 }
