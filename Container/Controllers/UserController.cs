@@ -20,6 +20,11 @@ namespace webleitour.Controllers
             return View(new UserModel());
         }
 
+        public ActionResult Registrar()
+        {
+            return View(new RegisterUserModel());
+        }
+
         [HttpPost]
         public async Task<ActionResult> Login(UserModel userModel)
         {
@@ -70,6 +75,7 @@ namespace webleitour.Controllers
                     }
                 }
             }
+            
             catch (Exception ex)
             {
                 ViewBag.ErrorMessage = "Erro ao fazer a requisição à API.";
@@ -77,38 +83,61 @@ namespace webleitour.Controllers
             }
         }
 
-        public async Task<ActionResult> Registrar(UserModel user)
+        [HttpPost]
+        public async Task<ActionResult> Register(RegisterUserModel model)
         {
             try
             {
-                using (var httpClient = new HttpClient())
+                using (var client = new HttpClient())
                 {
-                    string apiUrl = "https://localhost:5226/api/registrar";
+                    string apiUrl = "https://localhost:5226/api/User/register";
 
-                    user.ProfilePhoto = "https://wallpapers.com/images/hd/basic-default-pfp-pxi77qv5o0zuz8j3.jpg";
-                    user.Access = "COMUM";
-                    user.CreatedDate = DateTime.UtcNow;
-                    var jsonString = JsonConvert.SerializeObject(user);
+                    var jsonContent = new
+                    {
+                        Id = model.Id,
+                        NameUser = model.NameUser,
+                        Email = model.Email,
+                        Password = model.Password,
+                        ProfilePhoto = model.ProfilePhoto,
+                        Access = model.Access,
+                        CreatedDate = model.CreatedDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                    };
+
+                    string jsonString = JsonConvert.SerializeObject(jsonContent);
                     var content = new StringContent(jsonString, System.Text.Encoding.UTF8, "application/json");
 
-                    HttpResponseMessage response = await httpClient.PostAsync(apiUrl, content);
+                    HttpResponseMessage response = await client.PostAsync(apiUrl, content);
 
                     if (response.IsSuccessStatusCode)
                     {
-                        return RedirectToAction("Index", "User");
+                        var responseData = await response.Content.ReadAsStringAsync();
+                        var responseObject = JsonConvert.DeserializeObject<dynamic>(responseData);
+
+                        string token = responseObject.token;
+                        int userId = responseObject.user.id;
+
+                        logger.Info($"Token saved in cookie: {token}");
+
+                        var tokenCookie = new HttpCookie("AuthToken", token);
+                        Response.Cookies.Add(tokenCookie);
+
+                        var idCookie = new HttpCookie("UserID", userId.ToString());
+                        Response.Cookies.Add(idCookie);
+
+                        return RedirectToAction("Post", "Post"); 
                     }
                     else
                     {
-                        ViewBag.ErrorMessage = "Erro ao fazer a requisição à API.";
-                        return View("Registrar", user);
+                        return View("Registrar", model);
                     }
                 }
             }
             catch (Exception ex)
             {
-                ViewBag.ErrorMessage = "Erro ao fazer a requisição à API.";
-                return View("Registrar", user);
+                // Handle 
+                return View("Error", new HandleErrorInfo(ex, "User", "Register"));
             }
+
         }
 
         public async Task<ActionResult> Perfil(int id)

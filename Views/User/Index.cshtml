@@ -9,35 +9,22 @@
     <div class="container-login">
         <div class="login right-login gap2">
             <img src="~/Images/LogoLeitour.svg" alt="Logo">
-            <form asp-controller="User" asp-action="NewAccount" method="get">
-                @Html.ActionLink("Nova Conta", "Registrar", "User", new {id="newAccountButton"})
-            </form>
-            <div class="login-img">
-            <img src="~/Images/LogoLeitour.svg" alt="Logo">
-            </div>
             <div class="new-account-button">
-                <form asp-controller="User" asp-action="NewAccount" method="get">
-                    <button type="submit" id="newAccountButton">Nova Conta</button>
-                </form>
-            </div>
-        </div>
 
-        <div class="login left-login gap">
-            <h1>Login</h1>
-            <h3>Seja bem-vindo a Leitour</h3>
+                <form asp-controller="User" asp-action="NewAccount" method="get">
+                    @Html.ActionLink("Nova Conta", "Registrar", "User", new { id = "newAccountButton" })
+                </form>
+                </div>
+
+            </div>
+
+            <div class="login left-login gap">
+                <h1>Login</h1>
+                <h3>Seja bem-vindo a Leitour</h3>
                 @using (Html.BeginForm("Login", "User", FormMethod.Post))
                 {
                     <div class="form-login">
                         <div class="email-login">
-                            
-                            @Html.EditorFor(model => model.Email, new {placeholder="Email"})
-                        </div>
-                        <div class="password-login">
-                            
-                            @Html.PasswordFor(model => model.Password, new { placeholder = "Password" })
-                        </div>
-                        <div class="button-login">
-                            <input type="submit" value="Logar" id="loginButton">
                             <span class="email-login-span">@@</span>
                             @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder = "leitour@gmail.com" } })
                         </div>
@@ -50,8 +37,8 @@
                         </div>
                     </div>
                 }
+            </div>
         </div>
-    </div>
 </div>
 
 
@@ -168,7 +155,11 @@
     }
 
     .new-account-button {
-        width: 256px;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
         height: 56px;
     }
 

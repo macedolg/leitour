@@ -224,6 +224,7 @@
     <Compile Include="Container\Controllers\UserController.cs" />
     <Compile Include="Container\Models\Book.cs" />
     <Compile Include="Container\Models\CreatePost.cs" />
+    <Compile Include="Container\Models\RegisterUserModel.cs" />
     <Compile Include="Container\Models\User.cs" />
     <Compile Include="Container\Models\UserGeralModel.cs" />
     <Compile Include="Container\Models\UserModel.cs" />

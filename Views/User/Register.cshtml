@@ -1,7 +1,8 @@
-﻿@model webleitour.Container.Models.UserModel
+﻿@model webleitour.Container.Models.RegisterUserModel
 
 @{
     Layout = null;
+    ViewBag.Title = "Resposta da API";
 }
 
 <div class="main-section" id="main-section">
@@ -12,20 +13,21 @@
             </div>
             <div class="already-have-an-account-button">
                 <form asp-controller="User" asp-action="NewAccount" method="get">
-                    <button type="submit" id="newAccountButton">Nova Conta</button>
+                    @Html.ActionLink("Fazer Login", "Index", "User", new { id = "newAccountButton" }, null)
                 </form>
             </div>
         </div>
 
         <div class="register left-register gap">
-            <h1>Login</h1>
-            <h3>Seja bem-vindo a Leitour</h3>
-            @using (Html.BeginForm("RegisterPost", "User", FormMethod.Post))
+            <h1>Registro</h1>
+            <h3>Nova Conta</h3>
+            @using (Html.BeginForm("Registrar", "User", FormMethod.Post))
             {
                 <div class="form-register">
                     <div class="nameuser-register">
                         <span class="email-register-span"><img src="~/Images/nameuser.svg" /></span>
-                        @Html.EditorFor(model => model.NameUser, new { htmlAttributes = new { placeholder = "Insira seu apelído" } })
+                        @Html.TextBoxFor(model => model.NameUser, new { @class = "form-control", required = "required" })
+                        @Html.ValidationMessageFor(model => model.NameUser)
                     </div>
 
                     <div class="email-register">
